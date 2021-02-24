@@ -8,3 +8,6 @@ import 'package:stacked/stacked.dart';
 
 part 'home/home_view.dart';
 part 'home/home_viewmodel.dart';
+
+part 'login/login_view.dart';
+part 'login/login_viewmodel.dart';
