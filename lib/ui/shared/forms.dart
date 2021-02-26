@@ -11,8 +11,8 @@ class UIForms {
             Icons.alternate_email,
             color: Colors.deepPurple,
           ),
-          hintText: 'ejemplo@correo.com',
-          labelText: 'Correo electrónico',
+          hintText: 'example@email.com',
+          labelText: 'Email Address',
         ),
       ),
     );
@@ -28,7 +28,7 @@ class UIForms {
             Icons.lock_outline,
             color: Colors.deepPurple,
           ),
-          labelText: 'Contraseña',
+          labelText: 'Password',
         ),
       ),
     );

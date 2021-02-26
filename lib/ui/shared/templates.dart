@@ -31,7 +31,7 @@ class UITemplates {
             child: Column(
               children: [
                 Text(
-                  'Ingreso',
+                  'Log In',
                   style: TextStyle(fontSize: 20.0),
                 ),
                 SizedBox(
@@ -49,7 +49,7 @@ class UITemplates {
               ],
             ),
           ),
-          Text('Olvido la contraseña?'),
+          Text('Forgot Password?'),
           SizedBox(
             height: 100,
           )

@@ -5,7 +5,7 @@ class UIButtons {
     return RaisedButton(
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 80, vertical: 15),
-        child: Text('Ingresar'),
+        child: Text('Log In'),
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5),
