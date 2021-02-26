@@ -5,10 +5,9 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<LoginViewModel>.reactive(
         builder: (context, model, child) => Scaffold(
-              body: Center(
-                child: Text('Login Page'),
-              ),
-            ),
+                body: Stack(
+              children: [UIBackground.loginBackground(context)],
+            )),
         viewModelBuilder: () => LoginViewModel());
   }
 }
