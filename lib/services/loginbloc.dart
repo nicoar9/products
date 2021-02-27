@@ -1,5 +1,8 @@
 import 'dart:async';
 
+import 'package:injectable/injectable.dart';
+
+@lazySingleton
 class LoginBloc {
   final _emailController = StreamController<String>.broadcast();
   final _passwordController = StreamController<String>.broadcast();
