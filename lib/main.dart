@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       home: LoginView(),
       onGenerateRoute: Router(),
       navigatorKey: StackedService.navigatorKey,
+      theme: ThemeData(primaryColor: Colors.deepPurple),
     );
   }
 }
