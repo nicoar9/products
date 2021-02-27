@@ -10,7 +10,7 @@ class LoginView extends StatelessWidget {
                 UIBackground.loginBackground(
                   context,
                 ),
-                UITemplates.loginCardTemplate(context)
+                UITemplates.loginCardTemplate(context, model)
               ],
             )),
         viewModelBuilder: () => LoginViewModel());

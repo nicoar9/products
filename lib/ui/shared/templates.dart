@@ -1,7 +1,7 @@
 part of ui.shared;
 
 class UITemplates {
-  static Widget loginCardTemplate(context) {
+  static Widget loginCardTemplate(BuildContext context, LoginViewModel model) {
     final size = MediaQuery.of(context).size;
 
     return SingleChildScrollView(
@@ -37,11 +37,11 @@ class UITemplates {
                 SizedBox(
                   height: 60,
                 ),
-                UIForms.emailInput(),
+                UIForms.emailInput(context, model),
                 SizedBox(
                   height: 30,
                 ),
-                UIForms.passwordInput(),
+                UIForms.passwordInput(context, model),
                 SizedBox(
                   height: 30,
                 ),
