@@ -1,7 +1,7 @@
 part of ui.shared;
 
 class UIButtons {
-  static Widget _crearBoton(LoginViewModel model) {
+  static Widget _loginButton(LoginViewModel model, {Function function}) {
     return StreamBuilder(
       stream: model.bloc.formValidStream,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -16,7 +16,7 @@ class UIButtons {
             color: Colors.deepPurple,
             textColor: Colors.white,
             elevation: 0,
-            onPressed: snapshot.hasData ? () {} : null);
+            onPressed: snapshot.hasData ? function : null);
       },
     );
   }

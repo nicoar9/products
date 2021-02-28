@@ -45,7 +45,9 @@ class UITemplates {
                 SizedBox(
                   height: 30,
                 ),
-                UIButtons._crearBoton(model),
+                UIButtons._loginButton(model,
+                    function: () => Navigator.pushReplacementNamed(
+                        context, Routes.homeView))
               ],
             ),
           ),
