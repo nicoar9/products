@@ -10,13 +10,14 @@ class UIForms {
             child: TextField(
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
-                  icon: Icon(
-                    Icons.alternate_email,
-                    color: Colors.deepPurple,
-                  ),
-                  hintText: 'example@email.com',
-                  labelText: 'Email Address',
-                  counterText: snapshot.data),
+                icon: Icon(
+                  Icons.alternate_email,
+                  color: Colors.deepPurple,
+                ),
+                hintText: 'example@email.com',
+                labelText: 'Email Address',
+                errorText: snapshot.error,
+              ),
               onChanged: (value) => model.bloc.changeEmail(value),
             ),
           );
@@ -24,18 +25,24 @@ class UIForms {
   }
 
   static Widget passwordInput(context, LoginViewModel model) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20),
-      child: TextField(
-        obscureText: true,
-        decoration: InputDecoration(
-          icon: Icon(
-            Icons.lock_outline,
-            color: Colors.deepPurple,
+    return StreamBuilder(
+      stream: model.bloc.passwordStream,
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        return Container(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: TextField(
+            obscureText: true,
+            decoration: InputDecoration(
+                icon: Icon(
+                  Icons.lock_outline,
+                  color: Colors.deepPurple,
+                ),
+                labelText: 'Password',
+                errorText: snapshot.error),
+            onChanged: (value) => model.bloc.changePassword(value),
           ),
-          labelText: 'Password',
-        ),
-      ),
+        );
+      },
     );
   }
 }

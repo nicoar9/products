@@ -1,7 +1,6 @@
 library ui.shared;
 
 import 'package:flutter/material.dart';
-import 'package:products_app/services/loginbloc.dart';
 import 'package:products_app/ui/views/views.dart';
 
 part 'background.dart';
