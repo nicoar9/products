@@ -1,7 +1,7 @@
 part of ui.shared;
 
 class UIButtons {
-  static Widget _loginButton(LoginViewModel model, {Function function}) {
+  static Widget loginButton(LoginViewModel model, {Function function}) {
     return StreamBuilder(
       stream: model.bloc.formValidStream,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -19,5 +19,12 @@ class UIButtons {
             onPressed: snapshot.hasData ? function : null);
       },
     );
+  }
+
+  static Widget floatinActionButton(function) {
+    return FloatingActionButton(
+        child: Icon(Icons.add),
+        backgroundColor: Colors.deepPurple,
+        onPressed: function);
   }
 }

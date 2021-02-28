@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Material App',
-      home: LoginView(),
+      home: HomeView(),
       onGenerateRoute: Router(),
       navigatorKey: StackedService.navigatorKey,
       theme: ThemeData(primaryColor: Colors.deepPurple),

@@ -14,9 +14,11 @@ import '../ui/views/views.dart';
 class Routes {
   static const String homeView = '/home-view';
   static const String loginView = '/login-view';
+  static const String productView = '/product-view';
   static const all = <String>{
     homeView,
     loginView,
+    productView,
   };
 }
 
@@ -26,6 +28,7 @@ class Router extends RouterBase {
   final _routes = <RouteDef>[
     RouteDef(Routes.homeView, page: HomeView),
     RouteDef(Routes.loginView, page: LoginView),
+    RouteDef(Routes.productView, page: ProductView),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -39,6 +42,12 @@ class Router extends RouterBase {
     LoginView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => LoginView(),
+        settings: data,
+      );
+    },
+    ProductView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => ProductView(),
         settings: data,
       );
     },
