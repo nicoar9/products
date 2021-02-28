@@ -45,4 +45,18 @@ class UIForms {
       },
     );
   }
+
+  static Widget simpleFormField({String text}) {
+    return TextFormField(
+      textCapitalization: TextCapitalization.sentences,
+      decoration: InputDecoration(labelText: text),
+    );
+  }
+
+  static Widget numberFormField({String text}) {
+    return TextFormField(
+      keyboardType: TextInputType.numberWithOptions(decimal: true),
+      decoration: InputDecoration(labelText: text),
+    );
+  }
 }

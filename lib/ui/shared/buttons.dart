@@ -27,4 +27,17 @@ class UIButtons {
         backgroundColor: Colors.deepPurple,
         onPressed: function);
   }
+
+  static Widget buttonIcon({String text}) {
+    return RaisedButton.icon(
+      onPressed: () {},
+      icon: Icon(Icons.save),
+      label: Text('$text'),
+      color: Colors.deepPurple,
+      textColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+    );
+  }
 }

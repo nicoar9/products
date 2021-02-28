@@ -19,7 +19,11 @@ class ProductView extends StatelessWidget {
                   padding: EdgeInsets.all(15),
                   child: Form(
                       child: Column(
-                    children: <Widget>[],
+                    children: <Widget>[
+                      UIForms.simpleFormField(text: 'Product'),
+                      UIForms.numberFormField(text: 'Price'),
+                      UIButtons.buttonIcon(text: 'Save'),
+                    ],
                   )),
                 ),
               ),
