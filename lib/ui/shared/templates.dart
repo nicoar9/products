@@ -45,7 +45,7 @@ class UITemplates {
                 SizedBox(
                   height: 30,
                 ),
-                UIButtons._crearBoton(),
+                UIButtons._crearBoton(model),
               ],
             ),
           ),
