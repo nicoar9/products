@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:products_app/app/locator.dart';
 import 'package:products_app/app/router.gr.dart';
+import 'package:products_app/models/product_model.dart';
 import 'package:products_app/services/loginbloc.dart';
 import 'package:stacked/stacked.dart';
 

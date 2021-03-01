@@ -3,6 +3,8 @@ part of app.ui.views;
 class ProductViewModel extends BaseViewModel {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+  ProductModel product = ProductModel();
+
   String validateName(String value) {
     if (value.length < 3) {
       return 'enter producto name';
@@ -21,5 +23,10 @@ class ProductViewModel extends BaseViewModel {
 
   void submit() => formKey.currentState.validate() == false
       ? print('errors on inputs')
-      : print('Everything working!');
+      : formKey.currentState.save();
+
+  void switchOnChange(value) {
+    product.available = value;
+    notifyListeners();
+  }
 }

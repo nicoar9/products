@@ -46,19 +46,31 @@ class UIForms {
     );
   }
 
-  static Widget simpleFormField({Function validateFunction, String text}) {
+  static Widget simpleFormField(
+      {Function onSaveFunction,
+      String initialValue,
+      Function validateFunction,
+      String text}) {
     return TextFormField(
+      initialValue: initialValue,
       validator: validateFunction,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(labelText: text),
+      onSaved: onSaveFunction,
     );
   }
 
-  static Widget numberFormField({Function validateFunction, String text}) {
+  static Widget numberFormField(
+      {Function onSaveFunction,
+      String initialNumber,
+      Function validateFunction,
+      String text}) {
     return TextFormField(
+      initialValue: initialNumber,
       validator: validateFunction,
       keyboardType: TextInputType.numberWithOptions(decimal: true),
       decoration: InputDecoration(labelText: text),
+      onSaved: onSaveFunction,
     );
   }
 }
