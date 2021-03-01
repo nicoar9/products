@@ -18,19 +18,21 @@ class ProductView extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.all(15),
                   child: Form(
+                      key: model.formKey,
                       child: Column(
-                    children: <Widget>[
-                      UIForms.simpleFormField(
-                          text: 'Product',
-                          validateFunction: (String value) =>
-                              model.validateName(value)),
-                      UIForms.numberFormField(
-                          text: 'Price',
-                          validateFunction: (String value) =>
-                              model.validateNumber(value)),
-                      UIButtons.buttonIcon(text: 'Save', function: () {}),
-                    ],
-                  )),
+                        children: <Widget>[
+                          UIForms.simpleFormField(
+                              text: 'Product',
+                              validateFunction: (String value) =>
+                                  model.validateName(value)),
+                          UIForms.numberFormField(
+                              text: 'Price',
+                              validateFunction: (String value) =>
+                                  model.validateNumber(value)),
+                          UIButtons.buttonIcon(
+                              text: 'Save', function: () => model.submit()),
+                        ],
+                      )),
                 ),
               ),
             ),

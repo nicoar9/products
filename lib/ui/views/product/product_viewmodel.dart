@@ -1,7 +1,7 @@
 part of app.ui.views;
 
 class ProductViewModel extends BaseViewModel {
-  final formkey = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   String validateName(String value) {
     if (value.length < 3) {
@@ -19,7 +19,7 @@ class ProductViewModel extends BaseViewModel {
           ? false
           : true;
 
-  void submit() => !formkey.currentState.validate()
+  void submit() => formKey.currentState.validate() == false
       ? print('errors on inputs')
       : print('Everything working!');
 }
