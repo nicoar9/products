@@ -28,9 +28,9 @@ class UIButtons {
         onPressed: function);
   }
 
-  static Widget buttonIcon({String text}) {
+  static Widget buttonIcon({Function function, String text}) {
     return RaisedButton.icon(
-      onPressed: () {},
+      onPressed: function,
       icon: Icon(Icons.save),
       label: Text('$text'),
       color: Colors.deepPurple,
