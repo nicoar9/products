@@ -5,6 +5,8 @@ class ProductViewModel extends BaseViewModel {
 
   ProductModel product = ProductModel();
 
+  final productService = ProductsService();
+
   String validateName(String value) {
     if (value.length < 3) {
       return 'enter producto name';
@@ -21,9 +23,13 @@ class ProductViewModel extends BaseViewModel {
           ? false
           : true;
 
-  void submit() => formKey.currentState.validate() == false
-      ? print('errors on inputs')
-      : formKey.currentState.save();
+  void submit() {
+    if (formKey.currentState.validate() == false) {
+      print('errors on inputs');
+    }
+    formKey.currentState.save();
+    productService.createProduct(product);
+  }
 
   void switchOnChange(value) {
     product.available = value;
