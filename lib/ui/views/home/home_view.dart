@@ -8,10 +8,24 @@ class HomeView extends StatelessWidget {
               appBar: AppBar(
                 title: Text(model.title),
               ),
-              body: Container(),
+              body: _productsList(model),
               floatingActionButton: UIButtons.floatinActionButton(
                   () => Navigator.pushNamed(context, Routes.productView)),
             ),
         viewModelBuilder: () => HomeViewModel());
+  }
+
+  Widget _productsList(HomeViewModel model) {
+    FutureBuilder(
+      future: model.productService.loadProduct(),
+      builder:
+          (BuildContext context, AsyncSnapshot<List<ProductModel>> snapshot) {
+        if (snapshot.hasData) {
+          return Container();
+        } else {
+          return Center(child: CircularProgressIndicator());
+        }
+      },
+    );
   }
 }
