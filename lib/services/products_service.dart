@@ -32,7 +32,12 @@ class ProductsService {
 
       products.add(prodTemp);
     });
-    print(products[0].id);
     return products;
+  }
+
+  Future<void> deleteProduct(String id) async {
+    final url = '$_url/products/$id.json';
+
+    final resp = await http.delete(url);
   }
 }

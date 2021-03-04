@@ -25,7 +25,7 @@ class HomeView extends StatelessWidget {
           return ListView.builder(
             itemCount: products.length,
             itemBuilder: (BuildContext context, int index) {
-              return _loadItem(context, products[index]);
+              return _loadItem(context, products[index], model);
             },
           );
         } else {
@@ -35,12 +35,16 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  Widget _loadItem(BuildContext context, ProductModel prod) {
+  Widget _loadItem(
+      BuildContext context, ProductModel prod, HomeViewModel model) {
     return Dismissible(
         key: UniqueKey(),
         background: Container(
           color: Colors.amber,
         ),
+        onDismissed: (direction) {
+          model.productService.deleteProduct(prod.id);
+        },
         child: ListTile(
           title: Text(prod.title),
           subtitle: Text(prod.price.toString()),
