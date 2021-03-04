@@ -46,9 +46,12 @@ class HomeView extends StatelessWidget {
           model.productService.deleteProduct(prod.id);
         },
         child: ListTile(
-          title: Text(prod.title),
-          subtitle: Text(prod.price.toString()),
-          onTap: () => Navigator.pushNamed(context, Routes.productView),
-        ));
+            title: Text(prod.title),
+            subtitle: Text(prod.price.toString()),
+            onTap: () {
+              model.productData.product = prod;
+              print(model.productData.product.price.toString());
+              Navigator.pushNamed(context, Routes.productView);
+            }));
   }
 }

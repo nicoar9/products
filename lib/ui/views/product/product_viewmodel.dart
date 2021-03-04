@@ -2,8 +2,15 @@ part of app.ui.views;
 
 class ProductViewModel extends BaseViewModel {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final productData = locator<ProductData>();
+  ProductModel product;
 
-  ProductModel product = ProductModel();
+  void initProduct() {
+    if (productData.product != null) {
+      product = productData.product;
+    }
+    product = product;
+  }
 
   final productService = ProductsService();
 
@@ -28,7 +35,12 @@ class ProductViewModel extends BaseViewModel {
       print('errors on inputs');
     }
     formKey.currentState.save();
-    productService.createProduct(product);
+
+    if (product.id == null) {
+      productService.createProduct(product);
+    } else {
+      productService.updateProduct(product);
+    }
   }
 
   void switchOnChange(value) {

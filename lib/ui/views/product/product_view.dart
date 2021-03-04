@@ -4,6 +4,7 @@ class ProductView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ProductViewModel>.reactive(
+        onModelReady: (ProductViewModel model) => model.initProduct(),
         builder: (context, model, child) => Scaffold(
               appBar: AppBar(
                 title: Text('Product'),

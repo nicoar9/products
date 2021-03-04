@@ -6,6 +6,7 @@ import 'package:injectable/injectable.dart';
 import 'package:products_app/app/locator.dart';
 import 'package:products_app/app/router.gr.dart';
 import 'package:products_app/models/product_model.dart';
+import 'package:products_app/services/arguments.dart';
 import 'package:products_app/services/loginbloc.dart';
 import 'package:products_app/services/products_service.dart';
 import 'package:stacked/stacked.dart';
