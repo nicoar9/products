@@ -4,4 +4,8 @@ import 'package:products_app/models/product_model.dart';
 @lazySingleton
 class ProductData {
   ProductModel product;
+
+  void resetProduct() {
+    product = ProductModel();
+  }
 }

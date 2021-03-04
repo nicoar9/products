@@ -9,8 +9,10 @@ class HomeView extends StatelessWidget {
                 title: Text(model.title),
               ),
               body: _productsList(model),
-              floatingActionButton: UIButtons.floatinActionButton(
-                  () => Navigator.pushNamed(context, Routes.productView)),
+              floatingActionButton: UIButtons.floatinActionButton(() {
+                model.productData.resetProduct();
+                return Navigator.pushNamed(context, Routes.productView);
+              }),
             ),
         viewModelBuilder: () => HomeViewModel());
   }

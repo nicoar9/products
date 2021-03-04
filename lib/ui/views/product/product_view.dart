@@ -6,6 +6,7 @@ class ProductView extends StatelessWidget {
     return ViewModelBuilder<ProductViewModel>.reactive(
         onModelReady: (ProductViewModel model) => model.initProduct(),
         builder: (context, model, child) => Scaffold(
+              key: model.scaffoldKey,
               appBar: AppBar(
                 title: Text('Product'),
                 actions: <Widget>[
@@ -41,7 +42,10 @@ class ProductView extends StatelessWidget {
                           onChanged: (value) => model.switchOnChange(value),
                         ),
                         UIButtons.buttonIcon(
-                            text: 'Save', function: () => model.submit()),
+                            text: 'Save',
+                            function: model._save == true
+                                ? null
+                                : () => model.submit(context)),
                       ],
                     ),
                   ),

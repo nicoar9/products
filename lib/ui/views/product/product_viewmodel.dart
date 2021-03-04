@@ -2,6 +2,9 @@ part of app.ui.views;
 
 class ProductViewModel extends BaseViewModel {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  bool _save;
+
   final productData = locator<ProductData>();
   ProductModel product;
 
@@ -30,17 +33,23 @@ class ProductViewModel extends BaseViewModel {
           ? false
           : true;
 
-  void submit() {
+  void submit(context) {
     if (formKey.currentState.validate() == false) {
       print('errors on inputs');
     }
     formKey.currentState.save();
+
+    _save = true;
 
     if (product.id == null) {
       productService.createProduct(product);
     } else {
       productService.updateProduct(product);
     }
+    notifyListeners();
+    ScaffoldMessenger.of(context)
+        .showSnackBar(UISnackbar.simpleSnackbar('Product Added'));
+    Navigator.pop(context);
   }
 
   void switchOnChange(value) {
