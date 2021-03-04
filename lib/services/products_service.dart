@@ -13,8 +13,6 @@ class ProductsService {
 
     final decodedData = json.decode(resp.body);
 
-    print(decodedData);
-
     return true;
   }
 
@@ -24,7 +22,7 @@ class ProductsService {
     final resp = await http.get(url);
 
     final Map<String, dynamic> decodedData = json.decode(resp.body);
-    List<ProductModel> products = List();
+    List<ProductModel> products = [];
 
     if (decodedData == null) return [];
 

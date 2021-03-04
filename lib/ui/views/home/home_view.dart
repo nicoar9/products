@@ -16,16 +16,35 @@ class HomeView extends StatelessWidget {
   }
 
   Widget _productsList(HomeViewModel model) {
-    FutureBuilder(
+    return FutureBuilder(
       future: model.productService.loadProduct(),
       builder:
           (BuildContext context, AsyncSnapshot<List<ProductModel>> snapshot) {
         if (snapshot.hasData) {
-          return Container();
+          final products = snapshot.data;
+          return ListView.builder(
+            itemCount: products.length,
+            itemBuilder: (BuildContext context, int index) {
+              return _loadItem(context, products[index]);
+            },
+          );
         } else {
           return Center(child: CircularProgressIndicator());
         }
       },
     );
+  }
+
+  Widget _loadItem(BuildContext context, ProductModel prod) {
+    return Dismissible(
+        key: UniqueKey(),
+        background: Container(
+          color: Colors.amber,
+        ),
+        child: ListTile(
+          title: Text(prod.title),
+          subtitle: Text(prod.price.toString()),
+          onTap: () => Navigator.pushNamed(context, Routes.productView),
+        ));
   }
 }
