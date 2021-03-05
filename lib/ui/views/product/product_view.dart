@@ -12,8 +12,10 @@ class ProductView extends StatelessWidget {
                 actions: <Widget>[
                   IconButton(
                       icon: Icon(Icons.photo_size_select_actual),
-                      onPressed: () {}),
-                  IconButton(icon: Icon(Icons.camera_alt), onPressed: () {}),
+                      onPressed: () => model._selectPhoto()),
+                  IconButton(
+                      icon: Icon(Icons.camera_alt),
+                      onPressed: () => model._takePhoto()),
                 ],
               ),
               body: SingleChildScrollView(
@@ -23,6 +25,7 @@ class ProductView extends StatelessWidget {
                     key: model.formKey,
                     child: Column(
                       children: <Widget>[
+                        model._showPhoto(),
                         UIForms.simpleFormField(
                             initialValue: model.product.title,
                             text: 'Product',

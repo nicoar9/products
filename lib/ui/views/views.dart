@@ -1,7 +1,10 @@
 library app.ui.views;
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 import 'package:products_app/app/locator.dart';
 import 'package:products_app/app/router.gr.dart';
