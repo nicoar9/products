@@ -59,6 +59,14 @@ class ProductView extends StatelessWidget {
   }
 
   Widget _showProduct(ProductViewModel model) {
+    if (model.product.photoUrl != null) {
+      return FadeInImage(
+        placeholder: AssetImage('assets/jar-loading.gif'),
+        image: NetworkImage(model.product.photoUrl),
+        height: 300,
+        fit: BoxFit.contain,
+      );
+    }
     if (model.photo != null) {
       return Image.file(
         model.photo,

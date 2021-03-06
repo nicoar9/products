@@ -41,12 +41,12 @@ class ProductViewModel extends BaseViewModel {
     formKey.currentState.save();
 
     _save = true;
-
+    notifyListeners();
     if (photo != null) {
-      product.photoUrl = await productService.uploadImage(photo);
+      product?.photoUrl = await productService.uploadImage(photo);
     }
 
-    if (product.id == null) {
+    if (product?.id == null) {
       productService.createProduct(product);
     } else {
       productService.updateProduct(product);
@@ -73,7 +73,9 @@ class ProductViewModel extends BaseViewModel {
   processPhoto(imageSource) async {
     photo = await ImagePicker.pickImage(source: imageSource);
 
-    if (photo != null) {}
+    if (photo != null) {
+      product?.photoUrl = null;
+    }
 
     notifyListeners();
   }

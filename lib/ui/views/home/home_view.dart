@@ -47,13 +47,33 @@ class HomeView extends StatelessWidget {
         onDismissed: (direction) {
           model.productService.deleteProduct(prod.id);
         },
-        child: ListTile(
-            title: Text(prod.title),
-            subtitle: Text(prod.price.toString()),
-            onTap: () {
-              model.productData.product = prod;
-              print(model.productData.product.price.toString());
-              Navigator.pushNamed(context, Routes.productView);
-            }));
+        child: Card(
+          child: Column(
+            children: [
+              (prod.photoUrl == null)
+                  ? Image(
+                      image: AssetImage('assets/no-image.png'),
+                    )
+                  : FadeInImage(
+                      placeholder: AssetImage(
+                        'assets/jar-loading.gif',
+                      ),
+                      image: NetworkImage(prod.photoUrl),
+                      height: 300,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
+              ListTile(
+                title: Text(prod.title),
+                subtitle: Text(prod.price.toString()),
+                onTap: () {
+                  model.productData.product = prod;
+                  print(model.productData.product.price.toString());
+                  Navigator.pushNamed(context, Routes.productView);
+                },
+              ),
+            ],
+          ),
+        ));
   }
 }
