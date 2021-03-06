@@ -5,5 +5,6 @@ import 'package:products_app/ui/views/views.dart';
   MaterialRoute(page: HomeView),
   MaterialRoute(page: LoginView),
   MaterialRoute(page: ProductView),
+  MaterialRoute(page: SignUpView),
 ])
 class $Router {}

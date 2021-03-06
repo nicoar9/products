@@ -25,3 +25,6 @@ part 'login/login_viewmodel.dart';
 
 part 'product/product_view.dart';
 part 'product/product_viewmodel.dart';
+
+part 'signup/signup_view.dart';
+part 'signup/signup_viewmodel.dart';

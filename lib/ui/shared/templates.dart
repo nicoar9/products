@@ -51,7 +51,11 @@ class UITemplates {
               ],
             ),
           ),
-          Text('Forgot Password?'),
+          FlatButton(
+            child: Text('Sign Up for Free'),
+            onPressed: () =>
+                Navigator.pushReplacementNamed(context, Routes.signUpView),
+          ),
           SizedBox(
             height: 100,
           )
