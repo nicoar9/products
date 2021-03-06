@@ -34,13 +34,17 @@ class ProductViewModel extends BaseViewModel {
           ? false
           : true;
 
-  void submit(context) {
+  void submit(context) async {
     if (formKey.currentState.validate() == false) {
       print('errors on inputs');
     }
     formKey.currentState.save();
 
     _save = true;
+
+    if (photo != null) {
+      product.photoUrl = await productService.uploadImage(photo);
+    }
 
     if (product.id == null) {
       productService.createProduct(product);
@@ -56,19 +60,6 @@ class ProductViewModel extends BaseViewModel {
   void switchOnChange(value) {
     product.available = value;
     notifyListeners();
-  }
-
-  Widget _showPhoto() {
-    if (product.photoUrl != null) {
-      //TODO:
-      return Container();
-    } else {
-      return Image(
-        image: AssetImage(photo?.path ?? 'assets/no-image.png'),
-        height: 300,
-        fit: BoxFit.cover,
-      );
-    }
   }
 
   _selectPhoto() async {

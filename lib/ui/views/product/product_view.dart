@@ -25,7 +25,7 @@ class ProductView extends StatelessWidget {
                     key: model.formKey,
                     child: Column(
                       children: <Widget>[
-                        model._showPhoto(),
+                        _showProduct(model),
                         UIForms.simpleFormField(
                             initialValue: model.product.title,
                             text: 'Product',
@@ -56,5 +56,21 @@ class ProductView extends StatelessWidget {
               ),
             ),
         viewModelBuilder: () => ProductViewModel());
+  }
+
+  Widget _showProduct(ProductViewModel model) {
+    if (model.photo != null) {
+      return Image.file(
+        model.photo,
+        height: 300,
+        fit: BoxFit.cover,
+      );
+    } else {
+      return Image.asset(
+        'assets/no-image.png',
+        height: 300,
+        fit: BoxFit.cover,
+      );
+    }
   }
 }
