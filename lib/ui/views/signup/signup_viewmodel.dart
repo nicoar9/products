@@ -1,6 +1,7 @@
 part of app.ui.views;
 
 class SignUpViewModel extends LoginViewModel {
+  final userService = UserService();
   BuildContext context;
 
   double sizeWidth(BuildContext context) {

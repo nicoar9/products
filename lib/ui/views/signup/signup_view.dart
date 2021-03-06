@@ -51,9 +51,10 @@ class SignUpView extends StatelessWidget {
                             SizedBox(
                               height: 30,
                             ),
-                            UIButtons.loginButton(model,
-                                function: () => Navigator.pushReplacementNamed(
-                                    context, Routes.homeView))
+                            UIButtons.loginButton(model, function: () {
+                              model.userService.newUser(
+                                  model.bloc.email, model.bloc.password);
+                            })
                           ],
                         ),
                       ),
