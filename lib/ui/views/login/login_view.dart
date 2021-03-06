@@ -10,7 +10,64 @@ class LoginView extends StatelessWidget {
                 UIBackground.loginBackground(
                   context,
                 ),
-                UITemplates.loginCardTemplate(context, model)
+                SingleChildScrollView(
+                  child: Column(
+                    children: <Widget>[
+                      SafeArea(
+                        child: Container(
+                          height: 180,
+                        ),
+                      ),
+                      Container(
+                        width: model.sizeWidth(context) * 0.85,
+                        padding: EdgeInsets.symmetric(vertical: 50),
+                        margin: EdgeInsets.symmetric(vertical: 30),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                          boxShadow: <BoxShadow>[
+                            BoxShadow(
+                              color: Colors.black26,
+                              blurRadius: 3,
+                              offset: Offset(0, 5),
+                              spreadRadius: 3,
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          children: [
+                            Text(
+                              'Log In',
+                              style: TextStyle(fontSize: 20.0),
+                            ),
+                            SizedBox(
+                              height: 60,
+                            ),
+                            UIForms.emailInput(context, model),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            UIForms.passwordInput(context, model),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            UIButtons.loginButton(model,
+                                function: () => Navigator.pushReplacementNamed(
+                                    context, Routes.homeView))
+                          ],
+                        ),
+                      ),
+                      FlatButton(
+                        child: Text('Sign Up for Free'),
+                        onPressed: () => Navigator.pushReplacementNamed(
+                            context, Routes.signUpView),
+                      ),
+                      SizedBox(
+                        height: 100,
+                      )
+                    ],
+                  ),
+                ),
               ],
             )),
         viewModelBuilder: () => LoginViewModel());
