@@ -51,9 +51,13 @@ class LoginView extends StatelessWidget {
                             SizedBox(
                               height: 30,
                             ),
-                            UIButtons.loginButton(model,
-                                function: () => Navigator.pushReplacementNamed(
-                                    context, Routes.homeView))
+                            UIButtons.loginButton(model, function: () {
+                              model.userService
+                                  .login(model.bloc.email, model.bloc.password);
+
+                              // return Navigator.pushReplacementNamed(
+                              //     context, Routes.homeView);
+                            })
                           ],
                         ),
                       ),

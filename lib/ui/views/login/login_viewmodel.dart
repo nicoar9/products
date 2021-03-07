@@ -1,6 +1,8 @@
 part of app.ui.views;
 
 class LoginViewModel extends BaseViewModel {
+  final UserService userService = UserService();
+
   final bloc = locator<LoginBloc>();
 
   double sizeWidth(BuildContext context) {
