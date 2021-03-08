@@ -8,7 +8,7 @@ class UserService {
 
   final _prefs = UserPreferences();
 
-  login(String email, String password) async {
+  Future<Map<String, dynamic>> login(String email, String password) async {
     final authData = {
       'email': email,
       'password': password,

@@ -2,7 +2,8 @@ part of app.ui.views;
 
 class SignUpViewModel extends LoginViewModel {
   final userService = UserService();
-  BuildContext context;
+
+  Map info;
 
   double sizeWidth(BuildContext context) {
     return MediaQuery.of(context).size.width;

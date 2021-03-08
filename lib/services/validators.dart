@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+
 class Validators {
   final validateEmail =
       StreamTransformer<String, String>.fromHandlers(handleData: (email, sink) {
@@ -17,4 +19,19 @@ class Validators {
       handleData: (password, sink) => password.length >= 6
           ? sink.add(password)
           : sink.addError('Password needs to be more than 6 characters'));
+
+  static void showAlert(BuildContext context, String message) {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: Text('invalid Information'),
+              content: Text(message),
+              actions: [
+                FlatButton(
+                  child: Text('Ok'),
+                  onPressed: () => Navigator.pop(context),
+                ),
+              ],
+            ));
+  }
 }
