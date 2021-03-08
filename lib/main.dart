@@ -17,9 +17,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final prefs = UserPreferences();
-    print(prefs.token);
-
     return MaterialApp(
       title: 'Material App',
       home: LoginView(),
