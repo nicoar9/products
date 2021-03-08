@@ -18,8 +18,10 @@ class HomeView extends StatelessWidget {
   }
 
   Widget _productsList(HomeViewModel model) {
-    return FutureBuilder(
-      future: model.productService.loadProduct(),
+    model.productBloc.loadProducts();
+
+    return StreamBuilder(
+      stream: model.productBloc.productsStream,
       builder:
           (BuildContext context, AsyncSnapshot<List<ProductModel>> snapshot) {
         if (snapshot.hasData) {
@@ -45,7 +47,7 @@ class HomeView extends StatelessWidget {
           color: Colors.amber,
         ),
         onDismissed: (direction) {
-          model.productService.deleteProduct(prod.id);
+          model.productBloc.deleteProduct(prod.id);
         },
         child: Card(
           child: Column(
