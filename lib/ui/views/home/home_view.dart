@@ -4,6 +4,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(
+        onModelReady: (HomeViewModel model) => model.reloadItems(),
         builder: (context, model, child) => Scaffold(
               appBar: AppBar(
                 title: Text(model.title),
@@ -18,8 +19,6 @@ class HomeView extends StatelessWidget {
   }
 
   Widget _productsList(HomeViewModel model) {
-    model.productBloc.loadProducts();
-
     return StreamBuilder(
       stream: model.productBloc.productsStream,
       builder:

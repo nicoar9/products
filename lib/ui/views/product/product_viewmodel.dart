@@ -3,6 +3,8 @@ part of app.ui.views;
 class ProductViewModel extends BaseViewModel {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  final productBloc = locator<ProductsBloc>();
+
   bool _save;
   File photo;
 
@@ -15,8 +17,6 @@ class ProductViewModel extends BaseViewModel {
     }
     product = product;
   }
-
-  final productService = ProductsService();
 
   String validateName(String value) {
     if (value.length < 3) {
@@ -43,13 +43,13 @@ class ProductViewModel extends BaseViewModel {
     _save = true;
     notifyListeners();
     if (photo != null) {
-      product?.photoUrl = await productService.uploadImage(photo);
+      product?.photoUrl = await productBloc.uploadPhoto(photo);
     }
 
     if (product?.id == null) {
-      productService.createProduct(product);
+      productBloc.createProduct(product);
     } else {
-      productService.updateProduct(product);
+      productBloc.updateProduct(product);
     }
     notifyListeners();
     ScaffoldMessenger.of(context)
